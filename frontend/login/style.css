@@ -1,0 +1,14 @@
+/* Login Specific Styles */
+/* Currently uses global components: auth-header, input-group, btn-primary */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#login-container {
+    max-width: 420px;
+}

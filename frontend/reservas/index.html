@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaNave - Clases</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Menú de Selección de Clases -->
+    <div class="container" id="class-menu-container" style="max-width: 1100px; position: relative;">
+
+        <div id="home-icon-nav" class="home-icon-nav" title="Volver al Inicio">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+            </svg>
+        </div>
+
+        <div class="glass-panel"
+            style="padding: 0; display: flex; flex-direction: row; overflow: hidden; min-height: 80vh;">
+
+            <!-- Sidebar de Reservas (Izquierda) -->
+            <div class="sidebar-summary">
+                <div class="sidebar-summary-header">
+                    <span class="icon">📅</span>
+                    <h3>Mis Reservas</h3>
+                </div>
+                <div id="summary-list" class="summary-list">
+                    <!-- JS generará la lista aquí -->
+                </div>
+            </div>
+
+            <!-- Contenido Principal (Derecha) -->
+            <div class="main-booking-content" style="flex: 1; padding: 30px; position: relative; overflow-y: auto;">
+                <div class="auth-header" style="margin-bottom: 20px;">
+                    <h2>Menú de Clases</h2>
+                    <p>Selecciona la disciplina en la que deseas entrenar hoy.</p>
+                </div>
+
+                <!-- Sticky Header for Day and Time selectors -->
+                <div class="sticky-calendar-header">
+                    <div class="mobile-calendar-container">
+                        <div class="calendar-header-info">
+                            <div class="date-info">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                    style="margin-right:10px; color:var(--text-muted)">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <div>
+                                    <span class="muted-label">DÍA</span>
+                                    <h3 id="current-date-display">...</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="horizontal-scroll-section">
+                            <button class="scroll-btn" id="scroll-days-left">&lt;</button>
+                            <div class="scroll-list days-list" id="days-list">
+                                <!-- JS generará los días -->
+                            </div>
+                            <button class="scroll-btn" id="scroll-days-right">&gt;</button>
+                        </div>
+
+                        <div class="horizontal-scroll-section no-arrows">
+                            <div class="scroll-list times-list" id="times-list">
+                                <!-- JS generará las horas -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vista de Todas las Sesiones (Vertical) -->
+                <div id="sessions-container" class="sessions-vertical-list">
+                    <!-- JS generará múltiples .session-details-card aquí -->
+                </div>
+
+                <button id="back-to-welcome-btn" class="btn-secondary" style="margin-top: 20px;">Volver al
+                    Inicio</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario de reserva (Oculto inicialmente) -->
+    <div class="container hidden" id="reserva-container">
+        <div class="glass-panel" style="max-width: 500px; margin: 0 auto;">
+            <div class="auth-header">
+                <h2>Reserva tu Plaza</h2>
+                <p id="selected-class-name" style="color: var(--primary); font-weight: 600; margin-top: 5px;">
+                    <!-- Javascript insertará aquí la clase -->
+                </p>
+                <p>Confirma la clase seleccionada.</p>
+            </div>
+
+            <div id="reserva-alert" class="error-message"></div>
+            <div id="reserva-success" class="success-message" style="display: none;"></div>
+
+            <form id="reserva-form">
+                <div class="input-group">
+                    <input type="date" id="reserva-date" required readonly placeholder=" ">
+                    <label for="reserva-date">Fecha de la clase</label>
+                </div>
+                <div class="input-group">
+                    <input type="time" id="reserva-time" required readonly placeholder=" ">
+                    <label for="reserva-time">Hora</label>
+                </div>
+
+                <button type="submit" class="btn-primary" id="reserva-btn">
+                    <span class="btn-text">Confirmar Asistencia</span>
+                    <div class="spinner"></div>
+                </button>
+            </form>
+
+            <button id="back-to-menu-btn" class="btn-secondary">Volver al Menú de Clases</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

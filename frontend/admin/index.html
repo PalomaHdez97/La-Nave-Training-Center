@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaNave - Admin Dashboard</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Overlay para cerrar el sidebar -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Menú Lateral -->
+    <nav class="sidebar glass-panel hidden" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Admin Nave</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#" id="home-btn" class="sidebar-link active">
+                    <span class="icon">🏠</span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="users-btn" class="sidebar-link">
+                    <span class="icon">👥</span>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" id="reservas-btn" class="sidebar-link">
+                    <span class="icon">📅</span>
+                    <span>Clases</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+    </nav>
+
+    <!-- Barra Superior -->
+    <header class="top-nav">
+        <div class="top-nav-left">
+            <button id="menu-toggle" class="hamburger-btn" title="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="nav-logo">
+            <img src="../img/LaNave.png" alt="La Nave CrossFit" class="nav-logo-img">
+            <span class="admin-badge">ADMIN</span>
+        </div>
+        <div class="top-nav-right">
+            <div class="user-menu-container">
+                <div class="user-pill" id="user-pill-trigger">
+                    <div class="user-avatar-badge" id="user-avatar-badge">A</div>
+                    <span id="user-pill-name">Admin</span>
+                </div>
+
+                <div class="user-dropdown-menu glass-panel" id="user-dropdown-menu">
+                    <button id="ajustes-dropdown-btn" class="dropdown-action-btn">
+                        <span class="icon">⚙️</span>
+                        <span>Ajustes</span>
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <button id="logout-btn" class="dropdown-action-btn">
+                        <span class="icon">🚪</span>
+                        <span>Cerrar Sesión</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido -->
+    <main class="main-content">
+        <!-- Dashboard Summary -->
+        <div class="container" id="home-panel" style="max-width: 800px;">
+            <div class="auth-card glass-panel welcome-card">
+                <h1 style="margin-bottom: 20px;">Control Administrativo</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-num" id="stat-total-users">--</span>
+                        <span class="stat-label">Usuarios</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-num" id="stat-today-res">--</span>
+                        <span class="stat-label">Reservas Hoy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gestión de Usuarios -->
+        <div class="container hidden" id="users-panel" style="max-width: 900px;">
+            <!-- ... existing user management ... -->
+            <div class="glass-panel" style="padding: 30px;">
+                <div class="auth-header">
+                    <h2>👥 Gestión Atletas</h2>
+                    <p>Visualiza y administra todos los socios registrados.</p>
+                </div>
+                <div class="table-wrapper">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Atleta</th>
+                                <th>Email</th>
+                                <th>Plan</th>
+                                <th>Rol</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-list-body">
+                            <!-- JS populate -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gestión de Clases (Calendario Admin) -->
+        <div class="container hidden" id="reservas-panel" style="max-width: 1000px;">
+            <div class="glass-panel"
+                style="padding: 0; display: flex; flex-direction: column; min-height: 80vh; overflow: hidden;">
+                <div class="auth-header" style="padding: 30px 30px 10px;">
+                    <h2>📅 Monitor de Clases</h2>
+                    <p>Control de asistencia y reservas.</p>
+                </div>
+
+                <div class="admin-calendar-view">
+                    <div class="sticky-calendar-header">
+                        <div class="days-selector" id="admin-days-list">
+                            <!-- JS populate -->
+                        </div>
+                    </div>
+
+                    <div id="admin-sessions-container" class="sessions-vertical-list"
+                        style="display: flex; flex-direction: column; gap: 20px; margin-top: 20px;">
+                        <!-- JS populate -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel Ajustes / Edición de Perfil -->
+        <div class="container hidden" id="ajustes-container" style="max-width: 520px;">
+            <div class="glass-panel" style="padding: 30px;">
+                <div class="auth-header" style="margin-bottom: 25px;">
+                    <h2>⚙️ Editar Perfil</h2>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Actualiza tu información personal</p>
+                </div>
+
+                <!-- Avatar editable -->
+                <div style="display:flex; justify-content:center; margin-bottom:28px;">
+                    <div class="welcome-avatar-wrap">
+                        <div class="welcome-avatar" id="profile-avatar"></div>
+                        <label for="profile-avatar-trigger" class="avatar-upload-btn" id="profile-avatar-menu-trigger"
+                            title="Cambiar foto">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                                <path
+                                    d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                                <circle cx="12" cy="13" r="4" />
+                            </svg>
+                        </label>
+
+                        <!-- Menú de opciones de avatar -->
+                        <div class="avatar-options-menu glass-panel" id="profile-avatar-options-menu">
+                            <div class="emoji-grid">
+                                <button class="emoji-option" data-emoji="👨‍🚀">👨‍🚀</button>
+                                <button class="emoji-option" data-emoji="👩‍🚀">👩‍🚀</button>
+                                <button class="emoji-option" data-emoji="🥷">🥷</button>
+                                <button class="emoji-option" data-emoji="🦸">🦸</button>
+                                <button class="emoji-option" data-emoji="🦹">🦹</button>
+                                <button class="emoji-option" data-emoji="🧛">🧛</button>
+                                <button class="emoji-option" data-emoji="🧟">🧟</button>
+                                <button class="emoji-option" data-emoji="🤖">🤖</button>
+                                <button class="emoji-option" data-emoji="👽">👽</button>
+                                <button class="emoji-option" data-emoji="🧙">🧙</button>
+                                <button class="emoji-option" data-emoji="🤠">🤠</button>
+                                <button class="emoji-option" data-emoji="🧑‍🔬">🧑‍🔬</button>
+                            </div>
+                            <div class="avatar-menu-divider"></div>
+                            <button class="menu-action-btn" id="profile-upload-photo-btn">
+                                <span class="icon">📷</span>
+                                <span>Subir Foto</span>
+                            </button>
+                        </div>
+
+                        <input type="file" id="profile-avatar-upload" accept="image/*" style="display:none">
+                    </div>
+                </div>
+
+                <form id="profile-form">
+                    <div class="input-group">
+                        <input type="text" id="profile-nombre" placeholder=" " required>
+                        <label for="profile-nombre">Nombre</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="profile-email" placeholder=" " required>
+                        <label for="profile-email">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="profile-password" placeholder=" " autocomplete="new-password">
+                        <label for="profile-password">Nueva Contraseña (opcional)</label>
+                    </div>
+                    <div id="profile-alert" class="error-message" style="display:none;"></div>
+                    <div id="profile-success"
+                        style="display:none; padding:12px; background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.3); border-radius:10px; color:#4ade80; font-size:0.9rem; margin-bottom:16px;">
+                        ✓ Perfil actualizado correctamente
+                    </div>
+                    <button type="submit" class="btn-primary" id="profile-save-btn">
+                        <span class="btn-text">Guardar Cambios</span>
+                        <div class="spinner"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
